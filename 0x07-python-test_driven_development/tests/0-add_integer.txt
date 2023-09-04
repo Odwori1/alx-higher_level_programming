@@ -1,0 +1,79 @@
+The `0-add_integer` Module
+===========================
+
+Using the `add_integer` function in the module
+-------------------------------
+
+Import the `add_integer` function:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Test: Two integers a and b
+
+    >>> add_integer(1, 2)
+    3
+
+Test: Positive (a) and Negative (b)
+
+    >>> add_integer(100, -2)
+    98
+
+Test: One integer a, b has default val (a = 2, b = default (98))
+
+    >>> add_integer(2)
+    100
+
+Test: Float a and negative interger b
+
+    >>> add_integer(100.3, -2)
+    98
+
+Test: first arg value a is int and Second arg invalid
+
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+Test: None args given
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Test: Single float arg
+
+    >>> add_integer(4.45)
+    102
+
+Test: One negative float argument a
+
+    >>> add_integer(-98.888)
+    0
+
+Test: Two floats a and b
+
+    >>> add_integer(0.4, 0.4)
+    0
+
+Test: String first argument
+
+    >>> add_integer("ALX", 0)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Test: Float overlow:
+
+	>>> add_integer(float('inf'), 2)
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+Test: Not a num:
+
+	>>> add_integer(float('nan'), 2)
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer

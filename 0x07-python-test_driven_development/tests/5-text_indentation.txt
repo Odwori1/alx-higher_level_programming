@@ -1,0 +1,75 @@
+The ``text_indentation`` module
+===============================
+
+using ``text_indentation``
+--------------------------
+
+First import ``text_indentation``:
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test: Pass in string with one char:
+
+	>>> text_indentation("Hello: World")
+	Hello:
+	<NEWLINE>
+	World
+
+Test: non-string argument:
+
+	>>> text_indentation(42)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+Test: none of the characters:
+
+	>>> text_indentation("Hello")
+	Hello
+
+Test: Pass in only special chars:
+
+	>>> text_indentation("?.:")
+	?
+	<NEWLINE>
+	.
+	<NEWLINE>
+	:
+	<NEWLINE>
+
+Test: Pass in special chars with whitespaces:
+
+	>>> text_indentation("  ?  :  .  ")
+	?
+	<NEWLINE>
+	:
+	<NEWLINE>
+	.
+	<NEWLINE>
+
+Test: None as argument:
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+
+Test: No arguments:
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+
+Test: spaces but no special chars:
+
+	>>> text_indentation("Hello   ")
+	Hello
+
+Test: Pass in whitespace:
+
+	>>> text_indentation("I   .")
+	Hello.
+	<NEWLINE>

@@ -44,3 +44,59 @@ class Rectangle:
     @property
     def height(self):
         """getter method of the height
+
+        Returns: the height
+        """
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """setter method for the height
+
+        Args:
+            value: height value
+
+        Raises:
+            TypeError: if value is not an integer
+            ValueError: if value < 0
+
+        """
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
+
+    def area(self):
+        """
+        Method that returns the area of the rectangle
+        """
+        return self.width * self.height
+
+    def perimeter(self):
+        """
+        Method that return the perimeter of the rectangle
+        """
+        if not self.width or not self.height:
+            return 0
+        return (self.width + self.height) * 2
+
+    def __str__(self):
+        """
+        Return the string representation of the rectangle
+        """
+        if self.width == 0 or self.height == 0:
+            return ""
+        return (("#" * self.width + "\n") * self.height).strip()
+
+    def __repr__(self):
+        """
+        Return the formal representation of the rectangle
+        """
+        return f"Rectangle({self.width}, {self.height})"
+
+    def __del__(self):
+        """
+        Detect instance deletion
+        """
+        print("Bye rectangle...")

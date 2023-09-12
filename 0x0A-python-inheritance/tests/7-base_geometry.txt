@@ -1,0 +1,145 @@
+``7-base_geometry`` module
+==========================
+
+using ``7-base_geometry:
+------------------------
+
+first, import function from module:
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Test: Check if it it an instannce:
+
+	>>> test = BaseGeometry()
+	>>> type(test) == BaseGeometry
+	True
+
+Test: Check area fun implementation:
+
+	>>> test.area()
+	Traceback (most recent call last):
+	...
+	Exception: area() is not implemented
+
+Test: Check area method type:
+
+	>>> type(BaseGeometry.__dict__['area'])
+	<class 'function'>
+
+Test: single additional arg for area:
+
+	>>> test.area(7)
+	Traceback (most recent call last):
+	...
+	TypeError: area() takes 1 positional argument but 2 were given
+
+Test: Pass no args for area func:
+
+	>>> test.__class__.area()
+	Traceback (most recent call last):
+	...
+	TypeError: area() missing 1 required positional argument: 'self'
+
+Test: Pass in two extra args for area:
+
+	>>> test.area(1, 7)
+	Traceback (most recent call last):
+	...
+	TypeError: area() takes 1 positional argument but 3 were given
+
+Test: Check if integer_validator method is an instance method:
+
+	>>> type(BaseGeometry.__dict__['integer_validator'])
+	<class 'function'>
+
+Test: Pass in 1st arg as string to integer_validator func:
+
+	>>> test.integer_validator("hi", 25)
+
+
+Test: Pass in no arg to integer_validator:
+
+	>>> test.__class__.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 3 required positional arguments: 'self', 'name', and 'value'
+
+Test: Pass in no arg to integer_validator:
+
+	>>> test.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Test: Pass multiple arg to integer_validator:
+
+	>>> test.integer_validator(1, 4, 1)
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+Test: Pass in float to integer_validator:
+
+	>>> test.integer_validator("world", 4.5)
+	Traceback (most recent call last):
+	...
+	TypeError: world must be an integer
+
+Test: Pass in only string into integer_validator:
+
+	>>> test.integer_validator("hello", "world")
+	Traceback (most recent call last):
+	...
+	TypeError: hello must be an integer
+
+Test: Pass in None instead of int:
+
+	>>> test.integer_validator("hello", None)
+	Traceback (most recent call last):
+	...
+	TypeError: hello must be an integer
+
+Test: Pass in True instead of int:
+
+	>>> test.integer_validator("hi", True)
+	Traceback (most recent call last):
+	...
+	TypeError: hi must be an integer
+
+Test: Pass in  a list:
+
+	>>> test.integer_validator("list", [19])
+	Traceback (most recent call last):
+	...
+	TypeError: list must be an integer
+
+Test:Pass in empty string as value:
+
+	>>> test.integer_validator("", 1)
+
+Test: Pass in 0:
+
+	>>> test.integer_validator("zero", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: zero must be greater than 0
+
+Test: Pass in a dictionary:
+
+	>>> test.integer_validator("dic", {11, 5})
+	Traceback (most recent call last):
+	...
+	TypeError: dic must be an integer
+
+Test: Pass in negative int:
+
+	>>> test.integer_validator("negative", -187)
+	Traceback (most recent call last):
+	...
+	ValueError: negative must be greater than 0
+
+Test: Pass in tuple instead of int:
+
+	>>> test.integer_validator("test", (10, 2, 7))
+	Traceback (most recent call last):
+	...
+	TypeError: test must be an integer
